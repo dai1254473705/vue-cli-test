@@ -8,6 +8,7 @@
 + https://ssr.vuejs.org/zh/guide/#%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2%E6%A8%A1%E6%9D%BF
 
 + https://cn.vuejs.org/v2/guide/ssr.html
+
 ``` bash
 # install dependencies
 npm install

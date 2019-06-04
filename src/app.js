@@ -16,16 +16,22 @@ const renderer = vueServerRender.createRenderer({
 // }).catch(err => {
 //   console.error(err)
 // })
+const createVueApp = (context,template)=>{
+    return new Vue({
+        data: context,
+        template
+    });
+}
 
 server.get('*', async (req, res) => {
     try {
     // vue实例
-    const app = new Vue({
-        data: {
-            url: req.url
-        },
-        template: `<div>访问的 URL 是： {{ url }}</div>`
-    });
+    const tpl = `<div>访问的 URL 是： {{ url }}</div>`;
+    const data = {
+        url: req.url
+    };
+    const app = createVueApp(data,tpl);
+
     // 页面参数
     const context = {
         title: '哈哈',
@@ -41,6 +47,7 @@ server.get('*', async (req, res) => {
     // response
     res.end(html);
     } catch (error) {
+        console.log(error);
         res.status(500).end('Internal Server Error');
         return;
     }
